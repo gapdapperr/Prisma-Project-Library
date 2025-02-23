@@ -17,7 +17,7 @@ model Author {
   id        Int      @id @default(autoincrement())
   firstName String
   lastName  String
-  affiliation String?
+  affiliation String
   books     Book[]
 }
 
@@ -26,8 +26,8 @@ model Book {
   title     String
   isbn      String @unique
   category  String
-  authorId  Int
-  author    Author @relation(fields: [authorId], references: [id])
+  authorId  Int?
+  author    Author? @relation(fields: [authorId], references: [id])
   borrows   Borrow[]
 }
 
