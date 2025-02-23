@@ -7,8 +7,8 @@ export function getAllMembers() {
   return prisma.member.findMany();
 }
 
-export function getMemberById(id: number) {
-  return prisma.member.findUnique({ where: { id } });
+export function getMemberByMemberCode(memberCode: string) {
+  return prisma.member.findFirst({ where: { memberCode } });
 }
 
 export function getMemberByFirstName(firstName: string) {

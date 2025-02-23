@@ -41,12 +41,14 @@ model Member {
 }
 
 model Borrow {
-  id         Int    @id @default(autoincrement())
-  memberId   Int
-  bookId     Int
-  borrowDate DateTime @default(now())
-  dueDate    DateTime
-  returnDate DateTime?
-  member     Member @relation(fields: [memberId], references: [id])
-  book       Book   @relation(fields: [bookId], references: [id])
+  memberId              Int
+  bookId                Int
+  borrowDate            DateTime @default(now())
+  dueDate               DateTime
+  returnDate            DateTime?
+  quantity              Int
+  member                Member   @relation(fields: [memberId], references: [id])
+  book                  Book     @relation(fields: [bookId], references: [id])
+
+  @@id([memberId, bookId])
 }

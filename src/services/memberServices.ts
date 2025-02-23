@@ -1,12 +1,12 @@
-import * as repo from "../repository/bookRepository";
+import * as repo from "../repository/memberRepository";
 
 
 export function getAllMembers() {
   return repo.getAllMembers();
 }
 
-export function getMemberById(id: number) {
-  return repo.getMemberById(id);
+export function getMemberByMemberCode(memberCode: string) {
+  return repo.getMemberByMemberCode(memberCode);
 }
 
 export function getMemberByFirstName(firstName: string) {

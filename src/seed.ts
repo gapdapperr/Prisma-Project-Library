@@ -1,9 +1,17 @@
-import { createBooks } from "./db/createBooks";
-import { PrismaClient } from "@prisma/client";
+import { } 
+import { createBooks } from './db/createBooks';
+import { createMembers } from './db/createMembers';
+import { createBorrows } from './db/createBorrows';
+import prisma from './prismaClient';
 
-const prisma = new PrismaClient();
+async function main() {
+  await createAuthors();
+  await createBooks();
+  await createMembers();
+  await createBorrows();
+}
 
-createBooks()
+main()
   .catch((e) => {
     console.error(e);
     process.exit(1);
@@ -11,5 +19,3 @@ createBooks()
   .finally(async () => {
     await prisma.$disconnect();
   });
-
-  

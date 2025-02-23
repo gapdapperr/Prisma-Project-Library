@@ -1,4 +1,5 @@
-import * as repo from "../repository/bookRepository";
+import * as repo from "../repository/authorRepository";
+
 
 export function getAllAuthors() {
   return repo.getAllAuthors();

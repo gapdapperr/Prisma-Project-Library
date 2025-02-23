@@ -1,6 +1,5 @@
 import * as repo from "../repository/bookRepository";
 
-// Books
 
 export function getAllBooks() {
   return repo.getAllBooks();
