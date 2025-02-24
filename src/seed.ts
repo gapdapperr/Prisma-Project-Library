@@ -1,8 +1,10 @@
-import { } 
+import { createAuthors } from './db/createAuthors';
 import { createBooks } from './db/createBooks';
 import { createMembers } from './db/createMembers';
 import { createBorrows } from './db/createBorrows';
-import prisma from './prismaClient';
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 async function main() {
   await createAuthors();
