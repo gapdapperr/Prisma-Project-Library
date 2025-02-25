@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import {getAllMembers, getMemberByFirstName, getMemberByMemberCode} from '../services/memberServices';
-import type { Book } from '../models/book';
+
 
 const router = express.Router();
 

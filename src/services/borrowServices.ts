@@ -5,10 +5,10 @@ export function getBorrowByDueDate(dueDate: Date) {
   return repo.getBorrowByDueDate(dueDate);
 }
 
-export function getBorrowByReturnDate(returnDate: Date) {
-  return repo.getBorrowByReturnDate(returnDate);
+export function getAllBorrow() {
+  return repo.getAllBorrow();
 }
 
-export function getBorrowNotReturned() {
-  return repo.getBorrowNotReturned();
+export function getBorrowNotReturned(returnDate: null) {
+  return repo.getBorrowNotReturned(returnDate);
 }
