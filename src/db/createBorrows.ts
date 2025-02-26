@@ -15,8 +15,7 @@ export async function createBorrows() {
         },
         borrowDate: randomBorrowDate(),
         dueDate: randomDueDate(),
-        returnDate: randomReturnDate(),
-        quantity: Math.floor(Math.random() * 3) + 1,
+        returnDate: randomReturnDate()
       },
     });
   }

@@ -8,7 +8,3 @@ export function getBorrowByDueDate(dueDate: Date) {
 export function getAllBorrow() {
   return repo.getAllBorrow();
 }
-
-export function getBorrowNotReturned(returnDate: null) {
-  return repo.getBorrowNotReturned(returnDate);
-}

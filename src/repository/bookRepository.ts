@@ -14,3 +14,7 @@ export function getBookById(id: number) {
 export function getBookByTitle(title: string) {
   return prisma.book.findFirst({ where: { title } });
 }
+
+export function getBookNotReturned() {
+  return prisma.book.findMany({where: {borrows: {some: {returnDate: null}}},orderBy: {id: 'asc'}});
+}

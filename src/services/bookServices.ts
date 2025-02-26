@@ -12,3 +12,7 @@ export function getBookById(id: number) {
 export function getBookByTitle(title: string) {
   return repo.getBookByTitle(title);
 }
+
+export function getBookNotReturned() {
+  return repo.getBookNotReturned();
+}
