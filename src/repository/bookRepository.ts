@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 
 export function getAllBooks() {
-  return prisma.book.findMany();
+  return prisma.book.findMany({include: {_count: {select: {borrows: true}},borrows: true}});
 }
 
 export function getBookById(id: number) {

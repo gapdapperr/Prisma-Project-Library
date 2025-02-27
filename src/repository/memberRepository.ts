@@ -21,9 +21,9 @@ export function getAllMembers() {
 }
 
 export function getMemberByMemberCode(memberCode: string) {
-  return prisma.member.findFirst({ where: { memberCode } });
+  return prisma.member.findUnique({ where: { memberCode } });
 }
 
 export function getMemberByFirstName(firstName: string) {
-  return prisma.member.findFirst({ where: { firstName } });
+  return prisma.member.findMany({ where: { firstName } });
 }

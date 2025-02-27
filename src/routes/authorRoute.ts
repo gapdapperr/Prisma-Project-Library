@@ -4,6 +4,8 @@ import {getAllAuthors, getAuthorById } from '../services/authorServices';
 
 const router = express.Router();
 
+// get all authors
+
 router.get('/', async (req: Request, res: Response) => {
     const authors = await getAllAuthors();
     if (authors.length === 0) {
@@ -12,6 +14,8 @@ router.get('/', async (req: Request, res: Response) => {
     }
     res.json(authors);
 });
+
+// get author by id
 
 router.get('/:id', async (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
