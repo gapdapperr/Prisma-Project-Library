@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
-import {getBorrowByDueDate, getAllBorrow} from '../services/borrowServices';
-
+import {getBorrowByDueDate, getAllBorrow, addBorrow} from '../services/borrowServices';
+import { getBookById, updateAvailability } from '../repository/bookRepository';
 
 const router = express.Router();
 
@@ -17,5 +17,20 @@ router.get('/', async (req: Request, res: Response) => {
         res.json(borrows);
     }
 });
+
+// add a borrow
+
+router.post('/', async (req: Request, res: Response) => {
+    const { bookId, memberId, dueDate } = req.body;
+    const book = await getBookById(bookId);
+    if (book?.isAvailable === false) {
+        res.status(400).json({ message: 'Book is not available' });
+        return;
+    }
+    const borrow = await addBorrow(bookId, memberId, new Date(dueDate));
+    await updateAvailability(bookId, false);
+    res.json(borrow);
+}
+);
 
 export default router;  

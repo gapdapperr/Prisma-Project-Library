@@ -18,3 +18,7 @@ export function getBookByTitle(title: string) {
 export function getBookNotReturned() {
   return prisma.book.findMany({where: {borrows: {some: {returnDate: null}}},orderBy: {id: 'asc'}});
 }
+
+export function updateAvailability(id: number, isAvailable: boolean) {
+  return prisma.book.update({ where: { id }, data: { isAvailable } });
+}

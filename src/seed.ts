@@ -3,14 +3,13 @@ import { createBooks } from './db/createBooks';
 import { createMembers } from './db/createMembers';
 import { createBorrows } from './db/createBorrows';
 import { PrismaClient } from '@prisma/client';
-
 const prisma = new PrismaClient();
 
 async function main() {
   await createAuthors();
   await createBooks();
   await createMembers();
-  await createBorrows();
+  await createBorrows()
 }
 
 main()

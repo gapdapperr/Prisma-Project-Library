@@ -8,3 +8,7 @@ export function getBorrowByDueDate(dueDate: Date) {
 export function getAllBorrow() {
   return prisma.borrow.findMany({include: {book: true, member: true}});
 }
+
+export function addBorrow(bookId: number, memberId: number, dueDate: Date) {
+  return prisma.borrow.create({ data: { bookId, memberId, dueDate, borrowDate: new Date() } });
+}

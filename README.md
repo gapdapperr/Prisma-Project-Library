@@ -41,7 +41,6 @@ npx prisma migrate dev
 ```
 
 ## Features
-## Features
 
 - **Book Management**: 
     - `GET /books`: View all books.
@@ -61,6 +60,7 @@ npx prisma migrate dev
 - **Borrow Management**: 
     - `GET /borrows`: View all borrow records.
     - `GET /borrows?dueDate=dueDate`: Search for borrow records by due date.
+    - `POST /borrows`: Add a new borrow record.
 
 ## Contributing
 

@@ -16,3 +16,7 @@ export function getBookByTitle(title: string) {
 export function getBookNotReturned() {
   return repo.getBookNotReturned();
 }
+
+export function updateAvailability(id: number, isAvailable: boolean) {
+  return repo.updateAvailability(id, isAvailable);
+}

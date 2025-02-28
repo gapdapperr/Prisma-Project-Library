@@ -10,7 +10,7 @@ router.get('/', async (req: Request, res: Response) => {
     if (req.query.firstName) {
         const firstName = req.query.firstName as string;
         const filteredMember = await getMemberByFirstName(firstName);
-        console.log('here', filteredMember);
+        // console.log('here', filteredMember);
         if (!filteredMember || filteredMember.length === 0) {
             res.status(404).json({ message: 'Member not found' });
             return;}
@@ -18,7 +18,7 @@ router.get('/', async (req: Request, res: Response) => {
     }  else if (req.query.memberCode) {
         const memberCode = req.query.memberCode as string;
         const filteredMember = await getMemberByMemberCode(memberCode);
-        console.log('here', filteredMember);
+        // console.log('here', filteredMember);
         if (!filteredMember) {
             res.status(404).json({ message: 'Member not found' });
             return;}

@@ -27,6 +27,7 @@ model Book {
   isbn      String @unique
   category  String
   authorId  Int?
+  isAvailable Boolean @default(true)
   author    Author? @relation(fields: [authorId], references: [id])
   borrows   Borrow[]
 }
@@ -44,7 +45,7 @@ model Borrow {
   id                    Int      @id @default(autoincrement())
   memberId              Int
   bookId                Int
-  borrowDate            DateTime @db.Date()
+  borrowDate            DateTime @db.Date() 
   dueDate               DateTime @db.Date()
   returnDate            DateTime? @db.Date()
   member                Member   @relation(fields: [memberId], references: [id])
