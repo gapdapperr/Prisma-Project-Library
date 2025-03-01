@@ -1,10 +1,9 @@
-import { Book } from "./book"
-
+import { Book } from "./book";
 
 export interface Author {
-    id: number
-    firstName: String
-    lastName: String
-    affiliation: String
-    books: Book[]
+  id: number;
+  firstName: string;
+  lastName: string;
+  affiliation: string;
+  books: Book[];
 }

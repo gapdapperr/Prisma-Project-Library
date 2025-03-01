@@ -1,10 +1,66 @@
 import { PrismaClient } from '@prisma/client';
+import type { PageBook } from '../models/book';
 
 const prisma = new PrismaClient();
 
 
 export function getAllBooks() {
   return prisma.book.findMany({include: {_count: {select: {borrows: true}},borrows: true}});
+}
+
+export async function getAllBooksWithPagination(keyword: string,pageSize: number, pageNo: number) {
+  const where = {
+    OR: [
+      { title: { contains: keyword} },
+      { category: { contains: keyword} },
+      { author: {firstName: { contains: keyword}} },
+      { borrows: {some: {member: {firstName: {contains: keyword}}}} }
+    ]
+  };
+  
+  const books = await prisma.book.findMany({
+    where,
+    skip: pageSize * (pageNo - 1),
+    take: pageSize,
+    select : {
+      id: true,
+      title: true,
+      isbn: true,
+      category: true,
+      isAvailable: true,
+      author: {
+        select: {
+          firstName: true,
+          lastName: true,
+          affiliation: true,
+        },
+      },
+      borrows: {
+        select: {
+          borrowDate: true,
+          dueDate: true,  
+          returnDate: true,
+          member: {
+            select: {
+              firstName: true,
+              lastName: true,
+              phoneNumber: true,
+            },
+          }
+
+
+        }
+      },
+    }
+});
+
+const count = await prisma.book.count({where});
+return {count, books} as PageBook;
+}
+
+
+export function countBooks() {
+  return prisma.book.count();
 }
 
 export function getBookById(id: number) {

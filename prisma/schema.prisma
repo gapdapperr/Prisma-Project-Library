@@ -50,5 +50,4 @@ model Borrow {
   returnDate            DateTime? @db.Date()
   member                Member   @relation(fields: [memberId], references: [id])
   book                  Book     @relation(fields: [bookId], references: [id])
-
 }

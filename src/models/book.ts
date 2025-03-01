@@ -1,12 +1,19 @@
-import { Author } from "./author"
-import { Borrow } from "./borrow"
+import type { Author } from "./author"
+import type { Borrow } from "./borrow"
 
 export interface Book {
     id: number
-    title: String
-    isbn: String
-    category: String
-    authorId: number
-    author: Author
+    title: string
+    isbn: string
+    category: string
+    authorId: number | null
+    isAvailable: boolean
+    author: Author | null
     borrows: Borrow[]
 }
+
+export interface PageBook {
+    count: number;
+    books: Book[];
+}
+
