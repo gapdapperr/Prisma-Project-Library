@@ -9,7 +9,7 @@ export function getAllBooks() {
 }
 
 export async function getAllBooksWithPagination(keyword: string,pageSize: number, pageNo: number) {
-  const where = {
+  const where: any = {
     OR: [
       { title: { contains: keyword, mode: "insensitive"} },
       { category: { contains: keyword, mode: "insensitive"} },
