@@ -7,6 +7,9 @@ export function getAllBooks() {
 
 export async function getAllBooksWithPagination(keyword: string,pageSize: number, pageNo: number) {
   const pageBooks = await repo.getAllBooksWithPagination(keyword ,pageSize, pageNo);
+  if (pageSize < 1 || pageNo < 1 ) {
+    throw new Error('Invalid page number or page size');
+  }
   return pageBooks;
 }
 

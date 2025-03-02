@@ -11,10 +11,10 @@ export function getAllBooks() {
 export async function getAllBooksWithPagination(keyword: string,pageSize: number, pageNo: number) {
   const where = {
     OR: [
-      { title: { contains: keyword} },
-      { category: { contains: keyword} },
-      { author: {firstName: { contains: keyword}} },
-      { borrows: {some: {member: {firstName: {contains: keyword}}}} }
+      { title: { contains: keyword, mode: "insensitive"} },
+      { category: { contains: keyword, mode: "insensitive"} },
+      { author: {firstName: { contains: keyword, mode: "insensitive"}} },
+      { borrows: {some: {member: {firstName: {contains: keyword, mode: "insensitive"}}}} }
     ]
   };
   
